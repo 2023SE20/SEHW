@@ -5,7 +5,6 @@
 
 #include "Employment.h"
 #include <vector>
-using namespace std;
 
 class EmploymentCollection {
 public: 

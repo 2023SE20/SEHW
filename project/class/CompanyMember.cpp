@@ -1,8 +1,4 @@
 #include "../header/CompanyMember.h"
-// #include "../header/Member.h"
-// #include "../header/Employment.h"
-// #include "../header/EmploymentCollection.h"
-#include <iostream>
 
 /**
  * CompanyMember implementation
@@ -34,4 +30,11 @@ void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadlin
  */
 void CompanyMember::addNewEmployment(Employment* newEmployment) {
     this->employmentCollection->addEmployment(newEmployment);
+}
+
+/**
+ * @return 회사 회원의 회사명
+*/
+string CompanyMember::getCompanyName() {
+    return this->companyName;
 }

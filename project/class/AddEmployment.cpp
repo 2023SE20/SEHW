@@ -1,7 +1,4 @@
 #include "../header/AddEmployment.h"
-// #include "../header/AddEmploymentUI.h"
-// #include "../header/Employment.h"
-// #include "../header/CompanyMember.h"
 
 /**
  * AddEmployment implementation
@@ -14,7 +11,8 @@
  * @param maxApplicants 등록할 채용 정보의 채용 인원수
  */
 void AddEmployment::addNewEmployment(CompanyMember* currentMember, string job, string deadline, int maxApplicants) {
-    Employment* newEmployment = new Employment(job, deadline, maxApplicants);
+    string companyName = currentMember->getCompanyName();
+    Employment* newEmployment = new Employment(job, deadline, companyName, maxApplicants);
     currentMember->addNewEmployment(newEmployment);
 }
 
