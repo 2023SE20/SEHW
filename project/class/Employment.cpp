@@ -10,10 +10,12 @@
  * @param deadline
  * @param maxApplicants
  */
-Employment::Employment(string job, string deadline, int maxApplicants) {
+Employment::Employment(string job, string deadline, string companyName, int maxApplicants) {
     this->job = job;
     this->deadline = deadline;
     this->maxApplicants = maxApplicants;
+    this->companyName = companyName;
+    this->applicantsCount = 0;
 }
 
 /**
