@@ -3,13 +3,10 @@
 
 #include "CompanyMember.h"
 #include "AddEmploymentUI.h"
-#include <string>
-
-// using namespace std;
 
 class AddEmployment {
 public: 
-	void addNewEmployment(CompanyMember* currentMember, std::string job, std::string deadline, int maxApplicants);
+	void addNewEmployment(CompanyMember* currentMember, string job, string deadline, int maxApplicants);
 	void setAddEmploymentUI(AddEmploymentUI* addEmploymentUI);
 	AddEmploymentUI* getAddEmploymentUI();
 private: 

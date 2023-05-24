@@ -1,8 +1,6 @@
 #ifndef _ADDEMPLOYMENTUI_H
 #define _ADDEMPLOYMENTUI_H
 
-// #include "AddEmployment.h"
-// #include "Member.h"
 class AddEmployment;
 
 class AddEmploymentUI {

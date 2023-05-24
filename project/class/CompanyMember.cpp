@@ -1,5 +1,4 @@
 #include "../header/CompanyMember.h"
-#include <iostream>
 
 /**
  * CompanyMember implementation

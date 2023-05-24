@@ -1,6 +1,4 @@
 #include "../header/Logout.h"
-// #include "../header/LogoutUI.h"
-// #include "../header/Member.h"
 
 /**
  * Logout implementation

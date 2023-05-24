@@ -1,5 +1,4 @@
 #include "../header/ViewEmploymentsUI.h"
-#include <iostream>
 
 /**
  * ViewEmploymentsUI implementation

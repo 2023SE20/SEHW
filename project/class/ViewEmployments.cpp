@@ -1,6 +1,4 @@
 #include "../header/ViewEmployments.h"
-// #include "../header/ViewEmploymentsUI.h"
-// #include "../header/CompanyMember.h"
 
 /**
  * ViewEmployments implementation

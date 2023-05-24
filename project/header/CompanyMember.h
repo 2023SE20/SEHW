@@ -4,9 +4,9 @@
 #include "Member.h"
 #include "EmploymentCollection.h"
 
-#include <vector>
-#include <string>
-using namespace std;
+// #include <vector>
+// #include <string>
+// using namespace std;
 
 class CompanyMember: public Member {
 public: 
