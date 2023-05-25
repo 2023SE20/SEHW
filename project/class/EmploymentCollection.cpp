@@ -13,6 +13,10 @@ void EmploymentCollection::addEmployment(Employment* newEmployment) {
     employments.push_back(newEmployment);
 }
 
+void EmploymentCollection::deleteEmployment(int idx) {
+    employments.erase(employments.begin() + idx);
+}
+
 /**
  * @return 등록된 채용 정보 목록이 저장된 vector
  * 

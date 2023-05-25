@@ -11,10 +11,11 @@
  * 
  * 회사 회원이 새로 등록한 채용 정보를 추가함.
  */
-void AddEmployment::addNewEmployment(string job, string deadline, int maxApplicants) {
-    string companyName = companyMember->getCompanyName();
-    Employment* newEmployment = new Employment(job, deadline, companyName, maxApplicants);
-    companyMember->addNewEmployment(newEmployment);
+void AddEmployment::addNewEmployment(CompanyMember* currentMember, string job, string deadline, int maxApplicants) {
+    string companyName = currentMember->getCompanyName();
+    string businessNumber = currentMember->getBusinessNumber();
+    Employment* newEmployment = new Employment(job, deadline, companyName, businessNumber, maxApplicants);
+    currentMember->addNewEmployment(newEmployment);
 }
 
 /**

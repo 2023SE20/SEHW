@@ -26,13 +26,14 @@ CompanyMember::CompanyMember(string id, string password, string companyName, int
  * 
  * 회사 회원이 등록한 모든 채용 정보의 업무, 마감일, 인원 수 정보를 넘겨주기 위해 vector에 저장함.
  */
-void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants) {
+void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants, vector<int>* applicantsCount) {
     vector<Employment*> employments = (this->employmentCollection)->getEmployments();
 
     for (int i = 0; i < employments.size(); i++) {
         job->push_back(employments.at(i)->getJob());
         deadline->push_back(employments.at(i)->getDeadline());
         maxApplicants->push_back(employments.at(i)->getMaxApplicants());
+        applicantsCount->push_back(employments.at(i)->getApplicantsCount());
     }
 }
 
@@ -52,4 +53,8 @@ void CompanyMember::addNewEmployment(Employment* newEmployment) {
 */
 string CompanyMember::getCompanyName() {
     return this->companyName;
+}
+
+string CompanyMember::getBusinessNumber() {
+    return this->businessNumber;
 }

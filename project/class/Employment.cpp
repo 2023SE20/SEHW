@@ -12,7 +12,7 @@
  * 
  * 채용 정보 entity의 멤버 변수를 초기화하는 생성자
  */
-Employment::Employment(string job, string deadline, string companyName, int maxApplicants) {
+Employment::Employment(string job, string deadline, string companyName, string businessNumber, int maxApplicants) {
     this->job = job;
     this->deadline = deadline;
     this->maxApplicants = maxApplicants;
@@ -38,6 +38,14 @@ string Employment::getDeadline() {
     return this->deadline;
 }
 
+string Employment::getCompanyName(){
+    return this->companyName;
+}
+
+string Employment::getBusinessNumber(){
+    return this->businessNumber;
+}
+
 /**
  * @return 채용 정보의 채용 인원 수
  * 
@@ -45,4 +53,8 @@ string Employment::getDeadline() {
  */
 int Employment::getMaxApplicants() {
     return this->maxApplicants;
+}
+
+int Employment::getApplicantsCount(){
+    return this->applicantsCount;
 }
