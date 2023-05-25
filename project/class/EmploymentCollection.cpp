@@ -12,8 +12,8 @@ void EmploymentCollection::addEmployment(Employment* newEmployment) {
     employments.push_back(newEmployment);
 }
 
-void EmploymentCollection::deleteEmployment(iterator iter) {
-    employments.erase(employments.begin()+iter);
+void EmploymentCollection::deleteEmployment(int idx) {
+    employments.erase(employments.begin() + idx);
 }
 
 /**

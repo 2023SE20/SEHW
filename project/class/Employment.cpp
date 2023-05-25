@@ -10,7 +10,7 @@
  * @param deadline
  * @param maxApplicants
  */
-Employment::Employment(string job, string deadline, string companyName, int maxApplicants) {
+Employment::Employment(string job, string deadline, string companyName, string businessNumber, int maxApplicants) {
     this->job = job;
     this->deadline = deadline;
     this->maxApplicants = maxApplicants;
@@ -35,9 +35,11 @@ string Employment::getDeadline() {
 string Employment::getCompanyName(){
     return this->companyName;
 }
+
 string Employment::getBusinessNumber(){
     return this->businessNumber;
 }
+
 /**
  * @return 채용 정보의 채용 인원수
  */

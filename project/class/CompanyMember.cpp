@@ -39,3 +39,7 @@ void CompanyMember::addNewEmployment(Employment* newEmployment) {
 string CompanyMember::getCompanyName() {
     return this->companyName;
 }
+
+string CompanyMember::getBusinessNumber() {
+    return this->businessNumber;
+}

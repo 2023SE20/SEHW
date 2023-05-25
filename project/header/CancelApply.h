@@ -1,16 +1,15 @@
 #ifndef _CANCELAPPLY_H
 #define _CANCELAPPLY_H
 
-#include "Employment.h"
-#include "CancelApply UI.h"
-#include "NormalMember.h"
+#include "CancelApplyUI.h"
+
 class CancelApply {
-  private :
-    NormalMember* normalMember;
-    CancelApplyUI* cancelApplyUI;
+private :
+  NormalMember* normalMember;
+  CancelApplyUI* cancelApplyUI;
 public: 
-  CancelApplyUI* getcancelApplyUI();
-  void CancelToApply(Employment* employment);
+  CancelApplyUI* getCancelApplyUI();
+  vector<string> cancelToApply(NormalMember* normalMember, string number);
   void setCancelApplyUI(CancelApplyUI* cancelApplyUI);
 };
 

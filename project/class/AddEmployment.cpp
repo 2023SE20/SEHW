@@ -12,7 +12,8 @@
  */
 void AddEmployment::addNewEmployment(CompanyMember* currentMember, string job, string deadline, int maxApplicants) {
     string companyName = currentMember->getCompanyName();
-    Employment* newEmployment = new Employment(job, deadline, companyName, maxApplicants);
+    string businessNumber = currentMember->getBusinessNumber();
+    Employment* newEmployment = new Employment(job, deadline, companyName, businessNumber, maxApplicants);
     currentMember->addNewEmployment(newEmployment);
 }
 

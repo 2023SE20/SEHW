@@ -5,19 +5,21 @@
 using namespace std;
 
 class Employment {
-public: 
-	Employment(string job, string deadline, string companyName, int maxApplicants);
-	string getJob();
-	string getDeadline();
-	string getCompanyName();
-	int getMaxApplicants();
-	int getApplicantsCount();
 private: 
 	string job;
 	string deadline;
 	string companyName;
+	string businessNumber;
 	int maxApplicants;
 	int applicantsCount;
+public: 
+	Employment(string job, string deadline, string companyName, string businessNumber, int maxApplicants);
+	string getJob();
+	string getDeadline();
+	string getCompanyName();
+	string getBusinessNumber();
+	int getMaxApplicants();
+	int getApplicantsCount();
 };
 
 #endif //_EMPLOYMENT_H
