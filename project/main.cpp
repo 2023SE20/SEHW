@@ -2,6 +2,8 @@
 #include "./header/AddEmployment.h"
 #include "./header/Logout.h"
 #include "./header/ViewEmployments.h"
+#include "./CancelApply.h"
+#include "StatisticApplyInfo.h"
 
 #include "stdio.h"
 #include <string>
@@ -95,14 +97,25 @@ void doTask() {
                         break;
                     case 3:
                         break;
-                    case 4:
+                    case 4:{
+                        CancelApply* control = new CancelApply();
+                        control -> setCacncelApplyUI(new CancelApplyUI(inFp, outFp));
+                        (control -> getCancelApplyUI())->startInterface();
+                        (control -> getCancelApplyUI())->selectApplyToCacncel(currentMember, control);
                         break;
+                    }
                 }
                 break;
             case 5: 
                 switch(menuLevel2) {
-                    case 1:
+                    case 1:{
+                        StatisticApplyInfo* control = new StatisticApplyInfo();
+                        control ->setStatisticApplyInfoUI(new StatisticApplyInfoUI(inFp, outFp));
+                        (control -> getStatisticApplyInfoUI()) -> startInterface();
+                        (control -> getStatisticApplyInfoUI()) -> statisticApplyInfo(currentMember, control);
                         break;
+                    }
+                        
                 }
                 break;
             case 6: 

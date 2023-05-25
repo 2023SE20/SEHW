@@ -9,7 +9,9 @@ public:
 	Employment(string job, string deadline, string companyName, int maxApplicants);
 	string getJob();
 	string getDeadline();
+	string getCompanyName();
 	int getMaxApplicants();
+	int getApplicantsCount();
 private: 
 	string job;
 	string deadline;

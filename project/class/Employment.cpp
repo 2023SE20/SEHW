@@ -32,9 +32,19 @@ string Employment::getDeadline() {
     return this->deadline;
 }
 
+string Employment::getCompanyName(){
+    return this->companyName;
+}
+string Employment::getBusinessNumber(){
+    return this->businessNumber;
+}
 /**
  * @return 채용 정보의 채용 인원수
  */
 int Employment::getMaxApplicants() {
     return this->maxApplicants;
+}
+
+int Employment::getApplicantsCount(){
+    return this->applicantsCount;
 }
