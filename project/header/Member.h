@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+/**
+ * 회원 entity 클래스
+*/
 class Member {
 public: 
 	Member(string id, string password);

@@ -5,6 +5,7 @@
 
 #include "stdio.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -66,9 +67,10 @@ void doTask() {
                     case 1: {
                         AddEmployment* control = new AddEmployment();
                         control->setAddEmploymentUI(new AddEmploymentUI(inFp, outFp));
+                        control->setCompanyMember((CompanyMember*) currentMember);
 
                         (control->getAddEmploymentUI())->startInterface();
-                        (control->getAddEmploymentUI())->createNewEmployment(currentMember, control);
+                        (control->getAddEmploymentUI())->createNewEmployment(control);
 
                         break;
                     }

@@ -4,6 +4,15 @@
  * CompanyMember implementation
  */
 
+/**
+ * @param id 아이디
+ * @param password 비밀번호
+ * @param companyName 회사명
+ * @param businessNumber 사업자번호
+ * 
+ * 각 멤버 변수를 초기화하는 생성자.
+ * 부모 클래스인 Member의 생성자를 함께 호출함.
+*/
 CompanyMember::CompanyMember(string id, string password, string companyName, int businessNumber): Member(id, password) {
     this->companyName = companyName;
     this->businessNumber = businessNumber;
@@ -11,9 +20,11 @@ CompanyMember::CompanyMember(string id, string password, string companyName, int
 }
 
 /**
- * @param job
- * @param deadline
- * @param maxApplicants
+ * @param job 전체 채용 정보의 업무를 저장할 vector 포인터
+ * @param deadline 전체 채용 정보의 마감일을 저장할 vector 포인터
+ * @param maxApplicants 전체 채용 정보의 채용 인원수를 저장할 vector 포인터
+ * 
+ * 회사 회원이 등록한 모든 채용 정보의 업무, 마감일, 인원 수 정보를 넘겨주기 위해 vector에 저장함.
  */
 void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants) {
     vector<Employment*> employments = (this->employmentCollection)->getEmployments();
@@ -26,7 +37,9 @@ void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadlin
 }
 
 /**
- * @param newEmployment
+ * @param newEmployment 등록할 채용 정보 entity 객체 포인터
+ * 
+ * 등록한 채용 정보 목록에 새 채용 정보 객체를 추가함.
  */
 void CompanyMember::addNewEmployment(Employment* newEmployment) {
     this->employmentCollection->addEmployment(newEmployment);
@@ -34,6 +47,8 @@ void CompanyMember::addNewEmployment(Employment* newEmployment) {
 
 /**
  * @return 회사 회원의 회사명
+ * 
+ * 해당 회사 회원의 회사명을 반환함.
 */
 string CompanyMember::getCompanyName() {
     return this->companyName;

@@ -3,13 +3,14 @@
 
 class AddEmployment;
 
+/**
+ * 채용 정보 등록 boundary 클래스
+*/
 class AddEmploymentUI {
 public: 
 	AddEmploymentUI(FILE* inFp, FILE* outFp);
-	void setInFp(FILE* inFp);
-	void setOutFp(FILE* outFp);
 	void startInterface();
-	void createNewEmployment(Member* currentMember, AddEmployment* addEmployment);
+	void createNewEmployment(AddEmployment* addEmployment);
 private: 
 	FILE* inFp;
 	FILE* outFp;
