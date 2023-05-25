@@ -4,6 +4,7 @@
 #include "Member.h"
 #include "EmploymentCollection.h"
 #include <string>
+#include <map>
 using namespace std;
 
 class NormalMember : public Member {
@@ -20,6 +21,8 @@ public:
     vector<int>* applicantsCount,
     vector<int>* maxApplicants);
   EmploymentCollection* getEmploymentCollection() {return employmentCollection;}
+  void listEmployments2(map<string, vector<string>>* dataMap);
+  void apply(Employment* employment);
 };
 
 #endif //_NORMALMEMBER_H

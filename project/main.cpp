@@ -1,12 +1,20 @@
 #include "./header/Member.h"
-#include "./header/AddEmployment.h"
+#include "./header/CreateAccount.h"
+#include "./header/DeleteAccount.h"
+#include "./header/LogIn.h"
 #include "./header/Logout.h"
+#include "./header/AddEmployment.h"
 #include "./header/ViewEmployments.h"
 #include "./header/CancelApply.h"
+#include "./header/AddEmployment.h"
+#include "./header/ApplyToEmployment.h"
+#include "./header/SearchEmployment.h"
+#include "./header/ViewApplyInfo.h"
 #include "./header/StatisticApplyInfo.h"
 
 #include "stdio.h"
 #include <string>
+#include <map>
 #include <iostream>
 
 using namespace std;
@@ -22,6 +30,7 @@ void programExit();
 FILE *inFp, *outFp;
 Member* currentMember;
 vector<Member*> members;
+vector<Employment*> searchedList;
 
 int main() {
     inFp = fopen(INPUT_FILE_NAME, "r+");
@@ -40,27 +49,36 @@ void doTask() {
         switch(menuLevel1) {
             case 1: 
                 switch(menuLevel2) {
-                    case 1:
+                    case 1: {
+                        CreateAccount* control = new CreateAccount();
+                        control->setCreateAccountUI(new CreateAccountUI(inFp, outFp));
+
+                        (control->getCreateAccountUI())->startInterface();
+                        (control->getCreateAccountUI())->createAccount(control, &members);
                         break;
-                    case 2:
+                    }
+                    case 2: {
+                        DeleteAccount* control = new DeleteAccount();
+                        control->setDeleteAccountUI(new DeleteAccountUI(inFp, outFp));
+
+                        (control->getDeleteAccountUI())->startInterface();
+                        (control->getDeleteAccountUI())->deleteAccount(control, &currentMember, &members);
+                        cout << members.size() << endl;
                         break;
+                    }
                 }
                 break;
             case 2: 
                 switch(menuLevel2) {
-                    case 1:
-                        // currentMember = new CompanyMember("id", "pw1234", "hongik", 12345);
-                        currentMember = new NormalMember("id", "password", "name", "12345");
-                        ((NormalMember*) currentMember)->getEmploymentCollection()->addEmployment(
-                            new Employment("backend", "2023/05/31", "hongik", "1234", 20)
-                        );
-                        ((NormalMember*) currentMember)->getEmploymentCollection()->addEmployment(
-                            new Employment("frontend", "2023/05/31", "hongik", "22222", 20)
-                        );
-                        ((NormalMember*) currentMember)->getEmploymentCollection()->addEmployment(
-                            new Employment("backend", "2023/05/31", "hongik", "54321", 20)
-                        );
+                    case 1: {
+                        Login* control = new Login();
+                        control->setlLoginUI(new LoginUI(inFp, outFp));
+                        
+                        (control->getLogInUI())->startInterface();
+                        (control->getLogInUI())->logIn(members, &currentMember, control);
+                    
                         break;
+                    }
                     case 2: {
                         Logout* control = new Logout();
                         control->setLogoutUI(new LogoutUI(inFp, outFp));
@@ -103,12 +121,43 @@ void doTask() {
                 break;
             case 4: 
                 switch(menuLevel2) {
-                    case 1:
+                    {
+                    case 1:{
+                        // vector<Employment*> searchedList;
+                        SearchEmployment* searchControl = new SearchEmployment();
+                        searchControl->setSearchEmploymentUI(new SearchEmploymentUI(inFp, outFp));
+                        searchControl->setMembers(&members);
+
+                        (searchControl->getSearchEmploymentUI())->startInterface();
+                        searchedList = (searchControl->getSearchEmploymentUI())->searchEmployment(searchControl);
                         break;
+                    }
                     case 2:
+                        ApplyToEmployment* applyControl = new ApplyToEmployment();
+                        applyControl->setApplyToEmploymentUI(new ApplyToEmploymentUI(inFp, outFp));
+                        applyControl->setNormalMember((NormalMember*) currentMember);
+
+                        (applyControl->getApplyToEmploymentUI())->startInterface();
+                        (applyControl->getApplyToEmploymentUI())->apply(applyControl, searchedList);
                         break;
-                    case 3:
+                    }
+                    case 3: {
+                        ViewApplyInfo* control = new ViewApplyInfo();
+                        control->setViewApplyInfoUI(new ViewApplyInfoUI(inFp, outFp));
+                        control->setNormalMember((NormalMember*) currentMember);
+
+                        // vector<string> job, companyName, deadline, businessNumber;
+                        // vector<int> maxApplicants, applicantsCount;
+                        map<string, vector<string>> dataMap;
+                        (control->getViewApplyInfoUI())->startInterface();
+                        // (control->getNormalMember())->listEmployments(&job, &deadline, &companyName,
+                        //      &businessNumber, &applicantsCount, &maxApplicants);
+                        // ((control->getViewApplyInfoUI()))->showApplyInfo(&companyName, &businessNumber, &job, &deadline, &maxApplicants);
+                        (control->getNormalMember())->listEmployments2(&dataMap);
+                        (control->getViewApplyInfoUI())->showApplyInfo2(dataMap);
+
                         break;
+                    }
                     case 4: {
                         CancelApply* control = new CancelApply();
                         control->setCancelApplyUI(new CancelApplyUI(inFp, outFp));
@@ -146,5 +195,5 @@ void doTask() {
 }
 
 void programExit() {
-    fprintf(outFp, "6.1 종료\n");
+    fprintf(outFp, "6.1. 종료\n");
 }

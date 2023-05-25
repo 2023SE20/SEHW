@@ -11,7 +11,8 @@ class Member {
 public: 
 	Member(string id, string password);
 	string logout(Member** currentMember);
-	string getId() {return id;}
+	string getId();
+	string getPassword();
 private: 
 	string id;
 	string password;

@@ -26,3 +26,11 @@ string Member::logout(Member** currentMember) {
     *currentMember = NULL;
     return this->id;
 }
+
+string Member::getId() {
+    return id;
+}
+
+string Member::getPassword() {
+    return password;
+}

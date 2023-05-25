@@ -13,7 +13,7 @@
  * 각 멤버 변수를 초기화하는 생성자.
  * 부모 클래스인 Member의 생성자를 함께 호출함.
 */
-CompanyMember::CompanyMember(string id, string password, string companyName, int businessNumber): Member(id, password) {
+CompanyMember::CompanyMember(string id, string password, string companyName, string businessNumber): Member(id, password) {
     this->companyName = companyName;
     this->businessNumber = businessNumber;
     this->employmentCollection = new EmploymentCollection();
@@ -57,4 +57,26 @@ string CompanyMember::getCompanyName() {
 
 string CompanyMember::getBusinessNumber() {
     return this->businessNumber;
+}
+
+vector<Employment*> CompanyMember::getEmployments() {
+    return employmentCollection->getEmployments();
+}
+
+void CompanyMember::listEmployments2(map<string, vector<string>>* dataMap) {
+    (*dataMap)["job"] = vector<string>();
+    (*dataMap)["deadline"] = vector<string>();
+    (*dataMap)["companyName"] = vector<string>();
+    (*dataMap)["businessNumber"] = vector<string>();
+    (*dataMap)["maxApplicants"] = vector<string>();
+    vector<Employment*> employments = employmentCollection->getEmployments();
+
+    for (int i = 0; i < employments.size(); i++) {
+        Employment* temp = employments.at(i);
+        dataMap->at("job").push_back(temp->getJob());
+        dataMap->at("deadline").push_back(temp->getDeadline());
+        dataMap->at("companyName").push_back(temp->getCompanyName());
+        dataMap->at("businessNumber").push_back(temp->getBusinessNumber());
+        dataMap->at("maxApplicants").push_back(to_string(temp->getMaxApplicants()));
+    }
 }
