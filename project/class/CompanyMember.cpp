@@ -15,13 +15,14 @@ CompanyMember::CompanyMember(string id, string password, string companyName, int
  * @param deadline
  * @param maxApplicants
  */
-void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants) {
+void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants, vector<int>* applicantsCount) {
     vector<Employment*> employments = (this->employmentCollection)->getEmployments();
 
     for (int i = 0; i < employments.size(); i++) {
         job->push_back(employments.at(i)->getJob());
         deadline->push_back(employments.at(i)->getDeadline());
         maxApplicants->push_back(employments.at(i)->getMaxApplicants());
+        applicantsCount->push_back(employments.at(i)->getApplicantsCount());
     }
 }
 

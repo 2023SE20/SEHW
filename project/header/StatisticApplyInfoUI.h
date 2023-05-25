@@ -10,8 +10,13 @@
 #include "StatisticApplyInfo.h"
 
 class StatisticApplyInfoUI {
+  private: 
+	FILE* inFp;
+	FILE* outFp;
   public: 
-  StatisticApplyInfoUI();
+  StatisticApplyInfoUI(FILE* inFp, FILE* outFp);
+  void setInFp(FILE* inFp);
+	void setOutFp(FILE* outFp);
   void startInterface();
   void statisticApplyInfo(Member* member, StatisticApplyInfo* statisticApplyInfo);  
 

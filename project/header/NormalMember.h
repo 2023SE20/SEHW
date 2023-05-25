@@ -20,7 +20,8 @@ class NormalMember : Member{
     NormalMember(String id, string password, string name, string idNumber);
     void listEmployments(vector<string>* job, 
       vector<string>* deadline, 
-      vector<string>* companyName, 
+      vector<string>* companyName,
+      vector<string>* businessNumber, 
       vector<int>* applicantsCount,
       vector<int>* maxApplicants);
   

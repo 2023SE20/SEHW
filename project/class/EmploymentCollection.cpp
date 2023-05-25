@@ -12,6 +12,10 @@ void EmploymentCollection::addEmployment(Employment* newEmployment) {
     employments.push_back(newEmployment);
 }
 
+void EmploymentCollection::deleteEmployment(iterator iter) {
+    employments.erase(employments.begin()+iter);
+}
+
 /**
  * @return 등록된 채용 정보의 배열 첫 번째 원소를 참조하는 포인터
  */

@@ -14,15 +14,23 @@ StatisticApplyInfoUI::StatisticApplyInfoUI(){
 }
 
 void StatisticApplyInfoUI::startInterface() {
-    cout <<"5.1. 지원 정보 통계" << endl;
+  fprintf(outFp,"5.1. 지원 정보 통계\n");
+}
+void StatisticApplyInfoUI::setInFp(FILE* inFp){
+  this->inFp = inFp;
 }
 
-  void statisticApplyInfo(Member* member);
-/**
- * @param Id
- */
+void StatisticApplyInfoUI::setOutFp(FILE* outFp){
+  this->outFp = outFp;
+}
+
+
 void StatisticApplyInfoUI::statisticApplyInfo(Member* member, StatisticApplyInfo* statisticApplyInfo) {
-
-  statisticApplyInfo->printApplyInfo();
-
+ 
+  map<string, int> applyInfo;
+  applyInfo = statisticApplyInfo->printApplyInfo(member);
+  for(iterator iter = applyInfo.begin(); iter != applyInfo.end(); iter++){
+      fprintf(outFp, "> %s %d \n", iter->first, iter->second);
+    }
+  fprintf(outFp, "\n");
 }

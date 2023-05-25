@@ -9,6 +9,7 @@
 class EmploymentCollection {
 public: 
 	void addEmployment(Employment* newEmployment);
+	void deleteEmployment(Employment* newEmployment);
 	vector<Employment*> getEmployments();
 private: 
 	vector<Employment*> employments;

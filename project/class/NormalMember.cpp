@@ -12,7 +12,8 @@ NormalMember::NormalMember(String id, string password, string name, string idNum
 
     void NormalMember::listEmployments(vector<string>* job, 
       vector<string>* deadline, 
-      vector<string>* companyName, 
+      vector<string>* companyName,
+      vector<string>* businessNumber,
       vector<int>* applicantsCount,
       vector<int>* maxApplicants){
         vector<Employment*> employments = (this->employmentCollection)->getEmployments();
@@ -20,5 +21,6 @@ NormalMember::NormalMember(String id, string password, string name, string idNum
     for (int i = 0; i < employments.size(); i++) {
         job->push_back(employments.at(i)->getJob());
         companyName->push_back(employments.at(i)->getCompanyName);
+        businessNumber->push_back(employments.at(i)->getbusinessNumber);
      }
     }
