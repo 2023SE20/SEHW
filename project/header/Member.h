@@ -16,6 +16,7 @@ public:
 private: 
 	string id;
 	string password;
+	virtual void vf() {}
 };
 
 #endif //_MEMBER_H

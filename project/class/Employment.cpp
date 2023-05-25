@@ -17,6 +17,7 @@ Employment::Employment(string job, string deadline, string companyName, string b
     this->deadline = deadline;
     this->maxApplicants = maxApplicants;
     this->companyName = companyName;
+    this->businessNumber = businessNumber;
     this->applicantsCount = 0;
 }
 
@@ -44,6 +45,14 @@ string Employment::getCompanyName(){
 
 string Employment::getBusinessNumber(){
     return this->businessNumber;
+}
+
+void Employment::increaseApplicant() {
+    this->applicantsCount++;
+}
+
+void Employment::decreaseApplicant() {
+    this->applicantsCount--;
 }
 
 /**

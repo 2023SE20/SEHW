@@ -3,17 +3,18 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 using namespace std;
 
 void Login::logIn(vector<Member*> members, Member** member, string id, string password) {
     for (int i = 0; i < members.size(); i++) {
         Member* temp = members.at(i);
-        if (id == temp->getId() && password == temp->getPassword()) {
-            cout << temp->getId() << temp->getPassword() << endl;
+        if (strcmp(id.c_str(), temp->getId().c_str()) == 0 
+                && strcmp(password.c_str(), temp->getPassword().c_str()) == 0) {
             *member = temp;
             break;
+        } else {
         }
+
     }
 }
 

@@ -15,7 +15,6 @@
 #include "stdio.h"
 #include <string>
 #include <map>
-#include <iostream>
 
 using namespace std;
 
@@ -63,7 +62,6 @@ void doTask() {
 
                         (control->getDeleteAccountUI())->startInterface();
                         (control->getDeleteAccountUI())->deleteAccount(control, &currentMember, &members);
-                        cout << members.size() << endl;
                         break;
                     }
                 }
@@ -111,9 +109,10 @@ void doTask() {
 
                         vector<int> maxApplicants, applicantsCount;
                         vector<string> jobs, deadlines;
+                        map<string, vector<string>> dataMap;
                         (control->getViewEmploymentUI())->startInterface();
-                        (control->getCompanyMember())->listEmployments(&jobs, &deadlines, &maxApplicants, &applicantsCount);
-                        (control->getViewEmploymentUI())->showEmployment(&jobs, &deadlines, &maxApplicants);
+                        (control->getCompanyMember())->listEmployments(&dataMap);
+                        (control->getViewEmploymentUI())->showEmployments(&dataMap);
 
                         break;
                     }
@@ -123,13 +122,12 @@ void doTask() {
                 switch(menuLevel2) {
                     {
                     case 1:{
-                        // vector<Employment*> searchedList;
                         SearchEmployment* searchControl = new SearchEmployment();
                         searchControl->setSearchEmploymentUI(new SearchEmploymentUI(inFp, outFp));
                         searchControl->setMembers(&members);
 
                         (searchControl->getSearchEmploymentUI())->startInterface();
-                        searchedList = (searchControl->getSearchEmploymentUI())->searchEmployment(searchControl);
+                        searchedList = (searchControl->getSearchEmploymentUI())->searchEmployments(searchControl);
                         break;
                     }
                     case 2:
@@ -146,15 +144,10 @@ void doTask() {
                         control->setViewApplyInfoUI(new ViewApplyInfoUI(inFp, outFp));
                         control->setNormalMember((NormalMember*) currentMember);
 
-                        // vector<string> job, companyName, deadline, businessNumber;
-                        // vector<int> maxApplicants, applicantsCount;
                         map<string, vector<string>> dataMap;
                         (control->getViewApplyInfoUI())->startInterface();
-                        // (control->getNormalMember())->listEmployments(&job, &deadline, &companyName,
-                        //      &businessNumber, &applicantsCount, &maxApplicants);
-                        // ((control->getViewApplyInfoUI()))->showApplyInfo(&companyName, &businessNumber, &job, &deadline, &maxApplicants);
-                        (control->getNormalMember())->listEmployments2(&dataMap);
-                        (control->getViewApplyInfoUI())->showApplyInfo2(dataMap);
+                        (control->getNormalMember())->listEmployments(&dataMap);
+                        (control->getViewApplyInfoUI())->showApplyInfos(dataMap);
 
                         break;
                     }

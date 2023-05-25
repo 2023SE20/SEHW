@@ -19,7 +19,7 @@ AddEmploymentUI::AddEmploymentUI(FILE* inFp, FILE* outFp) {
  * 채용 정보 등록 기능 실행 시 초기 문구를 출력함.
 */
 void AddEmploymentUI::startInterface() {
-    fprintf(outFp, "3.1 채용 정보 등록\n");
+    fprintf(outFp, "3.1. 채용 정보 등록\n");
 }
 
 /**

@@ -19,23 +19,21 @@ ViewEmploymentsUI::ViewEmploymentsUI(FILE* inFp, FILE* outFp) {
  * 등록된 채용 정보 조회 기능 실행 시 초기 문구를 출력함.
 */
 void ViewEmploymentsUI::startInterface() {
-    fprintf(outFp, "3.2 등록된 채용 정보 조회\n");
+    fprintf(outFp, "3.2. 등록된 채용 정보 조회\n");
 }
 
 /**
- * @param job 전체 채용 정보의 업무 목록이 저장된 vector 포인터
- * @param deadline 전체 채용 정보의 마감일 목록이 저장된 vector 포인터
- * @param maxApplicants 전체 채용 정보의 인원 수 목록이 저장된 vector 포인터
+ * @param dataMap 전체 채용 정보 목록의 업무, 인원수, 마감일 정보가 저장된 map 포인터
  * 
  * 등록된 채용 정보의 업무, 마감일, 인원 수를 출력함.
  */
-void ViewEmploymentsUI::showEmployment(vector<string>* jobs, vector<string>* deadlines, vector<int>* maxApplicants) {    
-    for (int i = 0; i < jobs->size(); i++) {
-        string job = jobs->at(i);
-        string deadline = deadlines->at(i);
-        int maxApplicant = maxApplicants->at(i);
+void ViewEmploymentsUI::showEmployments(map<string, vector<string>>* dataMap) {
+    vector<string> job = dataMap->at("job");
+    vector<string> deadline = dataMap->at("deadline");
+    vector<string> maxApplicants = dataMap->at("maxApplicants");
 
-        fprintf(outFp, "> %s %d %s\n", job.c_str(), maxApplicant, deadline.c_str());
+    for (int i = 0; i < job.size(); i++) {
+        fprintf(outFp, "> %s %s %s\n", job.at(i).c_str(), maxApplicants.at(i).c_str(), deadline.at(i).c_str());
     }
     fprintf(outFp, "\n");
 }

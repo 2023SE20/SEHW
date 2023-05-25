@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 /**
@@ -12,7 +13,7 @@ class ViewEmploymentsUI {
 public: 
 	ViewEmploymentsUI(FILE* inFp, FILE* outFp);
 	void startInterface();
-	void showEmployment(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants);
+	void showEmployments(map<string, vector<string>>* dataMap);
 private: 
 	FILE* inFp;
 	FILE* outFp;

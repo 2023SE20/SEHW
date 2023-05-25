@@ -19,7 +19,7 @@ LogoutUI::LogoutUI(FILE* inFp, FILE* outFp) {
  * 로그아웃 기능 실행 시 초기 문구를 출력함.
 */
 void LogoutUI::startInterface() {
-    fprintf(outFp, "2.1 로그아웃\n");
+    fprintf(outFp, "2.2. 로그아웃\n");
 }
 
 /**

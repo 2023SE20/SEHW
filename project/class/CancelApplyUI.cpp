@@ -25,6 +25,7 @@ void CancelApplyUI::setOutFp(FILE* outFp) {
 void CancelApplyUI::selectApplyToCancel(NormalMember* currentMember, CancelApply* cancelApply) {
   string businessNumber;
   fscanf(inFp, "%s\n", businessNumber.data());
+  
   vector<string> tmp = cancelApply->cancelToApply(currentMember, businessNumber);
   fprintf(outFp, "> %s %s %s\n\n", tmp.front().c_str(), businessNumber.c_str(), tmp.back().c_str());
 }

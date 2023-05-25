@@ -21,6 +21,8 @@ public:
 	string getDeadline();
 	string getCompanyName();
 	string getBusinessNumber();
+	void increaseApplicant();
+	void decreaseApplicant();
 	int getMaxApplicants();
 	int getApplicantsCount();
 };

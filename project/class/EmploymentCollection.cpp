@@ -14,6 +14,7 @@ void EmploymentCollection::addEmployment(Employment* newEmployment) {
 }
 
 void EmploymentCollection::deleteEmployment(int idx) {
+    employments.at(idx)->decreaseApplicant();
     employments.erase(employments.begin() + idx);
 }
 

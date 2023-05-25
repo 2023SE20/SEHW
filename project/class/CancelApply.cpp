@@ -6,10 +6,12 @@
 
 vector<string> CancelApply::cancelToApply(NormalMember* normalMember, string number) {
     vector<string> result;
-    vector<string> job, deadline, companyName, businessNumber;
-    vector<int> applicantsCount, maxApplicants;
-    normalMember->listEmployments(&job, &deadline, &companyName, &businessNumber, &applicantsCount, &maxApplicants);
+    map<string, vector<string>> dataMap;
+    normalMember->listEmployments(&dataMap);
 
+    vector<string> job = dataMap.at("job");
+    vector<string> businessNumber = dataMap.at("businessNumber");
+    vector<string> companyName = dataMap.at("companyName");
     for (int i = 0; i < job.size(); i++) {
       if (number == businessNumber.at(i)) {
         result.push_back(companyName.at(i));

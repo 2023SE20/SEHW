@@ -20,24 +20,6 @@ CompanyMember::CompanyMember(string id, string password, string companyName, str
 }
 
 /**
- * @param job 전체 채용 정보의 업무를 저장할 vector 포인터
- * @param deadline 전체 채용 정보의 마감일을 저장할 vector 포인터
- * @param maxApplicants 전체 채용 정보의 채용 인원수를 저장할 vector 포인터
- * 
- * 회사 회원이 등록한 모든 채용 정보의 업무, 마감일, 인원 수 정보를 넘겨주기 위해 vector에 저장함.
- */
-void CompanyMember::listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants, vector<int>* applicantsCount) {
-    vector<Employment*> employments = (this->employmentCollection)->getEmployments();
-
-    for (int i = 0; i < employments.size(); i++) {
-        job->push_back(employments.at(i)->getJob());
-        deadline->push_back(employments.at(i)->getDeadline());
-        maxApplicants->push_back(employments.at(i)->getMaxApplicants());
-        applicantsCount->push_back(employments.at(i)->getApplicantsCount());
-    }
-}
-
-/**
  * @param newEmployment 등록할 채용 정보 entity 객체 포인터
  * 
  * 등록한 채용 정보 목록에 새 채용 정보 객체를 추가함.
@@ -63,12 +45,20 @@ vector<Employment*> CompanyMember::getEmployments() {
     return employmentCollection->getEmployments();
 }
 
-void CompanyMember::listEmployments2(map<string, vector<string>>* dataMap) {
+/**
+ * @param job 전체 채용 정보의 업무를 저장할 vector 포인터
+ * @param deadline 전체 채용 정보의 마감일을 저장할 vector 포인터
+ * @param maxApplicants 전체 채용 정보의 채용 인원수를 저장할 vector 포인터
+ * 
+ * 회사 회원이 등록한 모든 채용 정보의 업무, 마감일, 인원 수 정보를 넘겨주기 위해 vector에 저장함.
+ */
+void CompanyMember::listEmployments(map<string, vector<string>>* dataMap) {
     (*dataMap)["job"] = vector<string>();
     (*dataMap)["deadline"] = vector<string>();
     (*dataMap)["companyName"] = vector<string>();
     (*dataMap)["businessNumber"] = vector<string>();
     (*dataMap)["maxApplicants"] = vector<string>();
+    (*dataMap)["applicantsCount"] = vector<string>();
     vector<Employment*> employments = employmentCollection->getEmployments();
 
     for (int i = 0; i < employments.size(); i++) {
@@ -78,5 +68,6 @@ void CompanyMember::listEmployments2(map<string, vector<string>>* dataMap) {
         dataMap->at("companyName").push_back(temp->getCompanyName());
         dataMap->at("businessNumber").push_back(temp->getBusinessNumber());
         dataMap->at("maxApplicants").push_back(to_string(temp->getMaxApplicants()));
+        dataMap->at("applicantsCount").push_back(to_string(temp->getApplicantsCount()));
     }
 }
