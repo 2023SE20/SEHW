@@ -10,25 +10,6 @@ NormalMember::NormalMember(string id, string password, string name, string idNum
     this->employmentCollection = new EmploymentCollection();
 }
 
-// void NormalMember::listEmployments(vector<string>* job, 
-//         vector<string>* deadline, 
-//         vector<string>* companyName,
-//         vector<string>* businessNumber,
-//         vector<int>* applicantsCount,
-//         vector<int>* maxApplicants) {
-//     vector<Employment*> employments = (this->employmentCollection)->getEmployments();
-
-//     for (int i = 0; i < employments.size(); i++) {
-//         Employment* temp = employments.at(i);
-
-//         job->push_back(temp->getJob());
-//         deadline->push_back(temp->getDeadline());
-//         companyName->push_back(temp->getCompanyName());
-//         businessNumber->push_back(temp->getBusinessNumber());
-//         maxApplicants->push_back(temp->getMaxApplicants());
-//     }
-// }
-
 void NormalMember::listEmployments(map<string, vector<string>>* dataMap) {
     (*dataMap)["job"] = vector<string>();
     (*dataMap)["deadline"] = vector<string>();
