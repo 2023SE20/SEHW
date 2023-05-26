@@ -17,7 +17,6 @@ private:
 	EmploymentCollection* employmentCollection;
 public: 
 	CompanyMember(string id, string password, string companyName, string businessNumber);
-	// void listEmployments(vector<string>* job, vector<string>* deadline, vector<int>* maxApplicants, vector<int>* applicantsCount);
 	void listEmployments(map<string, vector<string>>* dataMap);
 	void addNewEmployment(Employment* newEmployment);
 	string getCompanyName();
