@@ -4,14 +4,19 @@
 #include <string>
 using namespace std;
 
+/**
+ * 회원 entity 클래스
+*/
 class Member {
 public: 
 	Member(string id, string password);
 	string logout(Member** currentMember);
-	string getId() {return id;}
+	string getId();
+	string getPassword();
 private: 
 	string id;
 	string password;
+	virtual void vf() {}
 };
 
 #endif //_MEMBER_H

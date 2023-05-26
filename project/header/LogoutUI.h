@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+/**
+ * 로그아웃 boundary 클래스
+*/
 class LogoutUI {
 public: 
 	LogoutUI(FILE* inFp, FILE* outFp);

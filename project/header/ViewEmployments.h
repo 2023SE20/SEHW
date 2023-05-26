@@ -4,6 +4,9 @@
 #include "CompanyMember.h"
 #include "ViewEmploymentsUI.h"
 
+/**
+ * 등록한 채용 정보 조회 control 클래스
+*/
 class ViewEmployments {
 public:
 	void setViewEmploymentUI(ViewEmploymentsUI* ViewEmploymentsUI);

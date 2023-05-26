@@ -8,34 +8,38 @@
 
 
 map<string, int> StatisticApplyInfo::printApplyInfo(Member* member) {
-  vector<string> job, deadline, companyName;
-  vector<int> applicantsCount, maxApplicants;
+  // vector<string> job, deadline, companyName;
+  // vector<int> applicantsCount, maxApplicants;
+  map<string, vector<string>> dataMap;
+  map<string, int> result;
   
   if (typeid(*member) == typeid(CompanyMember)) { // 회사회원인 경우
     CompanyMember* companyMember = (CompanyMember*) member;
-    companyMember->listEmployments(&job, &deadline, &maxApplicants, &applicantsCount);
-    map <string, int> result;
+    companyMember->listEmployments(&dataMap);
     
+    vector<string> job = dataMap.at("job");
+    vector<string> applicantsCount = dataMap.at("applicantsCount");
     for (int i = 0; i < job.size(); i++) {
-      result[job.at(i)] = applicantsCount.at(i);
+      result[job.at(i)] = stoi(applicantsCount.at(i));
     }
-    return result;
+    // return result;
   } else { // 일반회원인 경우
     NormalMember* normalMember = (NormalMember*) member;
-    vector<string> businessNumber;
+    // vector<string> businessNumber;
 
-    normalMember->listEmployments(&job, &deadline, &companyName, &businessNumber, &applicantsCount, &maxApplicants);
-    map<string, int> applyInfo;
+    normalMember->listEmployments(&dataMap);
+    // map<string, int> applyInfo;
 
+    vector<string> job = dataMap.at("job");
     for (int i = 0; i < job.size(); i++) {
-      if (applyInfo.find(job.at(i)) == applyInfo.end()) {
-        applyInfo[job.at(i)] = 1;
+      if (result.find(job.at(i)) == result.end()) {
+        result[job.at(i)] = 1;
       } else {
-        applyInfo[job.at(i)]++;
+        result[job.at(i)]++;
       }
     }
     
-    return applyInfo;
+    return result;
   }
 }
 

@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+/**
+ * 채용 정보 entity 클래스
+*/
 class Employment {
 private: 
 	string job;
@@ -18,6 +21,8 @@ public:
 	string getDeadline();
 	string getCompanyName();
 	string getBusinessNumber();
+	void increaseApplicant();
+	void decreaseApplicant();
 	int getMaxApplicants();
 	int getApplicantsCount();
 };
